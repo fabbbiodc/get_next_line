@@ -6,7 +6,7 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 23:22:05 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/05/31 17:57:29 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/05/31 18:23:19 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	ft_cleanlist(&list);
 	return (next_line);
 }
-int main(int argc, char **argv)
+/* int main(int argc, char **argv)
 {
     if (argc != 2)
     {
@@ -128,4 +128,7 @@ int main(int argc, char **argv)
 
     close(fd);
     return 0;
-}
+
+	cc -Werror -Wextra -Wall get_next_line.c get_next_line.h get_next_line_utils.c -g
+	./a.out ciao
+} */
