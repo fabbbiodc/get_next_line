@@ -6,11 +6,36 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 23:22:05 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/05/31 11:59:14 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:57:29 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	ft_cleanlist(t_list **list)
+{
+	t_list	*lastnode;
+	t_list	*cleannode;
+	int		i;
+	int		k;
+	char	*buffer;
+
+	buffer = malloc(BUFFER_SIZE + 1);
+	cleannode = malloc(sizeof(t_list));
+	if (NULL == buffer || NULL == cleannode)
+		return ;
+	lastnode = ft_lastnode(*list);
+	i = 0;
+	k = 0;
+	while (lastnode->content[i] && lastnode->content[i] != '\n')
+		i++;
+	while (lastnode->content[i] && lastnode->content[i++])
+		buffer[k++] = lastnode->content[i];
+	buffer[k] = '\0';
+	cleannode->content = buffer;
+	cleannode->next = NULL;
+	ft_freelist(list, cleannode, buffer);
+}
 
 char	*ft_getline(t_list *list)
 {
@@ -70,7 +95,7 @@ char	*get_next_line(int fd)
 	static t_list	*list = NULL;
 	char			*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	ft_newlist(&list, fd);
 	if (list == NULL)
@@ -79,4 +104,28 @@ char	*get_next_line(int fd)
 	ft_cleanlist(&list);
 	return (next_line);
 }
- 
+int main(int argc, char **argv)
+{
+    if (argc != 2)
+    {
+        printf("Usage: %s <filename>\n", argv[0]);
+        return 1;
+    }
+
+    int fd = open(argv[1], O_RDONLY);
+    if (fd == -1)
+    {
+        perror("Error opening file");
+        return 1;
+    }
+
+    char *line;
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
+
+    close(fd);
+    return 0;
+}
