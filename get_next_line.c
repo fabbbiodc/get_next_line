@@ -6,11 +6,26 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 23:22:05 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/05/30 16:39:41 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:59:14 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_getline(t_list *list)
+{
+	int		len;
+	char	*line;
+
+	if (NULL == list)
+		return (NULL);
+	len = ft_linelength(list);
+	line = malloc(len + 1);
+	if (NULL == line)
+		return (NULL);
+	ft_copyline(list, line);
+	return (line);
+}
 
 void	ft_append(t_list **list, char *buffer)
 {
@@ -64,3 +79,4 @@ char	*get_next_line(int fd)
 	ft_cleanlist(&list);
 	return (next_line);
 }
+ 
