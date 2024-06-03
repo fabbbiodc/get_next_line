@@ -6,7 +6,7 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 23:22:14 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/05/31 18:15:37 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:35:53 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int	ft_linelength(t_list *list)
 
 	if (NULL == list)
 		return (0);
+	len = 0;
 	while (list)
 	{
 		i = 0;
-		len = 0;
 		while (list->content[i])
 		{
 			if (list->content[i] == '\n')

@@ -6,7 +6,7 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 23:22:05 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/05/31 18:23:19 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:56:07 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_newlist(t_list **list, int fd)
 	int		chars;
 	char	*buffer;
 
-	while (!ft_newline(list[fd]))
+	while (!ft_newline(*list))
 	{
 		buffer = malloc(BUFFER_SIZE + 1);
 		if (NULL == buffer)
@@ -93,18 +93,18 @@ void	ft_newlist(t_list **list, int fd)
 char	*get_next_line(int fd)
 {
 	static t_list	*list = NULL;
-	char			*next_line;
+	char			*nextline;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	ft_newlist(&list, fd);
 	if (list == NULL)
 		return (NULL);
-	next_line = ft_getline(list);
+	nextline = ft_getline(list);
 	ft_cleanlist(&list);
-	return (next_line);
+	return (nextline);
 }
-/* int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     if (argc != 2)
     {
@@ -129,6 +129,7 @@ char	*get_next_line(int fd)
     close(fd);
     return 0;
 
-	cc -Werror -Wextra -Wall get_next_line.c get_next_line.h get_next_line_utils.c -g
-	./a.out ciao
-} */
+}
+
+/* cc -Werror -Wextra -Wall get_next_line.c get_next_line.h get_next_line_utils.c -g
+	./a.out ciao */
