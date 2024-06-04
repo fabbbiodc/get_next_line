@@ -6,7 +6,7 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:35:10 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/06/04 18:59:19 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:22:13 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ int main(int argc, char **argv)
 
 	while (i < argc)
 	{
-		fd[i] = open(argv[i], O_RDONLY);
+		fd[i++] = open(argv[i], O_RDONLY);
+		if (fd[i] < 0)
+			perror("Check your FDs");
+	}
+	i = 0;
+	
+
+
 		
 		
 		
