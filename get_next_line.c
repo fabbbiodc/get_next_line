@@ -6,7 +6,7 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 23:22:05 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/06/03 15:56:07 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:34:57 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	static t_list	*list = NULL;
 	char			*nextline;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	ft_newlist(&list, fd);
 	if (list == NULL)
@@ -104,32 +104,3 @@ char	*get_next_line(int fd)
 	ft_cleanlist(&list);
 	return (nextline);
 }
-int main(int argc, char **argv)
-{
-    if (argc != 2)
-    {
-        printf("Usage: %s <filename>\n", argv[0]);
-        return 1;
-    }
-
-    int fd = open(argv[1], O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Error opening file");
-        return 1;
-    }
-
-    char *line;
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line);
-        free(line);
-    }
-
-    close(fd);
-    return 0;
-
-}
-
-/* cc -Werror -Wextra -Wall get_next_line.c get_next_line.h get_next_line_utils.c -g
-	./a.out ciao */
