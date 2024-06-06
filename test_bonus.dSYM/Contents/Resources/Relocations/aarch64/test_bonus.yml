@@ -1,0 +1,20 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     test_bonus
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000033FC, symSize: 0x234 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000033FC, symSize: 0x234 }
+  - { offsetInCU: 0x26, offset: 0x117, size: 0x8, addend: 0x0, symName: _ft_cleanlist, symObjAddr: 0x0, symBinAddr: 0x100003630, symSize: 0x1B8 }
+  - { offsetInCU: 0x33, offset: 0x124, size: 0x8, addend: 0x0, symName: _get_next_line, symObjAddr: 0x3E4, symBinAddr: 0x100003A14, symSize: 0xC0 }
+  - { offsetInCU: 0x58, offset: 0x149, size: 0x8, addend: 0x0, symName: _get_next_line.list, symObjAddr: 0xE78, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0xD4, offset: 0x1C5, size: 0x8, addend: 0x0, symName: _ft_cleanlist, symObjAddr: 0x0, symBinAddr: 0x100003630, symSize: 0x1B8 }
+  - { offsetInCU: 0x13E, offset: 0x22F, size: 0x8, addend: 0x0, symName: _ft_getline, symObjAddr: 0x1B8, symBinAddr: 0x1000037E8, symSize: 0x9C }
+  - { offsetInCU: 0x182, offset: 0x273, size: 0x8, addend: 0x0, symName: _ft_append, symObjAddr: 0x254, symBinAddr: 0x100003884, symSize: 0xB4 }
+  - { offsetInCU: 0x1DE, offset: 0x2CF, size: 0x8, addend: 0x0, symName: _ft_newlist, symObjAddr: 0x308, symBinAddr: 0x100003938, symSize: 0xDC }
+  - { offsetInCU: 0x26, offset: 0x34F, size: 0x8, addend: 0x0, symName: _ft_freelist, symObjAddr: 0x0, symBinAddr: 0x100003AD4, symSize: 0xE4 }
+  - { offsetInCU: 0x33, offset: 0x35C, size: 0x8, addend: 0x0, symName: _ft_freelist, symObjAddr: 0x0, symBinAddr: 0x100003AD4, symSize: 0xE4 }
+  - { offsetInCU: 0x81, offset: 0x3AA, size: 0x8, addend: 0x0, symName: _ft_copyline, symObjAddr: 0xE4, symBinAddr: 0x100003BB8, symSize: 0x130 }
+  - { offsetInCU: 0xCF, offset: 0x3F8, size: 0x8, addend: 0x0, symName: _ft_linelength, symObjAddr: 0x214, symBinAddr: 0x100003CE8, symSize: 0xEC }
+  - { offsetInCU: 0x113, offset: 0x43C, size: 0x8, addend: 0x0, symName: _ft_lastnode, symObjAddr: 0x300, symBinAddr: 0x100003DD4, symSize: 0x6C }
+  - { offsetInCU: 0x13B, offset: 0x464, size: 0x8, addend: 0x0, symName: _ft_newline, symObjAddr: 0x36C, symBinAddr: 0x100003E40, symSize: 0xF0 }
+...
