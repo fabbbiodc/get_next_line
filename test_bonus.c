@@ -6,7 +6,7 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:35:10 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/06/07 09:42:28 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:43:19 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
+// cc -Wall -Werror -Wextra test_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c
 
 /* int main(int argc, char **argv)
 {
