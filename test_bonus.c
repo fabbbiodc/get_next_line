@@ -6,11 +6,16 @@
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:35:10 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/06/06 17:03:53 by fdi-cecc         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:42:28 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+#include "get_next_line_bonus.h"
+#include <fcntl.h>  // For open
+#include <stdio.h>  // For printf, perror
+#include <stdlib.h> // For free
 
 int main(int argc, char **argv)
 {
@@ -31,7 +36,8 @@ int main(int argc, char **argv)
     lines = (char **)malloc((argc - 1) * sizeof(char *));
     file_done = (int *)malloc((argc - 1) * sizeof(int));
 
-    for (i = 0; i < argc - 1; i++)
+    i = 0;
+    while (i < argc - 1)
     {
         fd[i] = open(argv[i + 1], O_RDONLY);
         if (fd[i] < 0)
@@ -44,12 +50,14 @@ int main(int argc, char **argv)
         }
         lines[i] = NULL;
         file_done[i] = 0; // Initialize file status as not done
+        i++;
     }
 
     files_remaining = argc - 1;
     while (files_remaining > 0)
     {
-        for (i = 0; i < argc - 1; i++)
+        i = 0;
+        while (i < argc - 1)
         {
             if (!file_done[i])
             {
@@ -68,16 +76,19 @@ int main(int argc, char **argv)
                     files_remaining--;
                 }
             }
+            i++;
         }
     }
 
-    for (i = 0; i < argc - 1; i++)
+    i = 0;
+    while (i < argc - 1)
     {
         close(fd[i]);
         if (lines[i] != NULL)
         {
             free(lines[i]);
         }
+        i++;
     }
 
     free(fd);
