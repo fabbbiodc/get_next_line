@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 23:22:05 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/06/04 15:55:27 by fdi-cecc         ###   ########.fr       */
+/*   Created: 2024/06/04 16:19:08 by fdi-cecc          #+#    #+#             */
+/*   Updated: 2024/06/04 16:30:15 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_cleanlist(t_list **list)
 {
@@ -52,17 +52,17 @@ char	*ft_getline(t_list *list)
 	return (line);
 }
 
-void	ft_append(t_list **list, char *buffer)
+void	ft_append(t_list **list, char *buffer, int fd)
 {
 	t_list	*newnode;
 	t_list	*lastnode;
 
-	lastnode = ft_lastnode(*list);
+	lastnode = ft_lastnode(list[fd]);
 	newnode = malloc(sizeof(t_list));
 	if (NULL == newnode)
 		return ;
 	if (NULL == lastnode)
-		*list = newnode;
+		list[fd] = newnode;
 	else
 		lastnode->next = newnode;
 	newnode->content = buffer;
@@ -74,7 +74,7 @@ void	ft_newlist(t_list **list, int fd)
 	int		chars;
 	char	*buffer;
 
-	while (!ft_newline(*list))
+	while (!ft_newline(list[fd]))
 	{
 		buffer = malloc(BUFFER_SIZE + 1);
 		if (NULL == buffer)
@@ -86,21 +86,21 @@ void	ft_newlist(t_list **list, int fd)
 			return ;
 		}
 		buffer[chars] = '\0';
-		ft_append(list, buffer);
+		ft_append(list, buffer, fd);
 	}
 }
 
 char	*get_next_line(int fd)
 {
-	static t_list	*list = NULL;
+	static t_list	*list[4096];
 	char			*nextline;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd >= 4096 || BUFFER_SIZE < 1)
 		return (NULL);
-	ft_newlist(&list, fd);
-	if (list == NULL)
+	ft_newlist(list, fd);
+	if (list[fd] == NULL)
 		return (NULL);
-	nextline = ft_getline(list);
-	ft_cleanlist(&list);
+	nextline = ft_getline(list[fd]);
+	ft_cleanlist(&list[fd]);
 	return (nextline);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdi-cecc <fdi-cecc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 23:22:14 by fdi-cecc          #+#    #+#             */
-/*   Updated: 2024/06/03 15:35:53 by fdi-cecc         ###   ########.fr       */
+/*   Created: 2024/06/04 16:19:30 by fdi-cecc          #+#    #+#             */
+/*   Updated: 2024/06/04 16:27:54 by fdi-cecc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_freelist(t_list **list, t_list *cleannode, char *buffer)
 {
